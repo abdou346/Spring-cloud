@@ -9,7 +9,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 
+
 @SpringBootApplication
+
 public class CustomerServiceApplication {
 
 	public static void main(String[] args) {

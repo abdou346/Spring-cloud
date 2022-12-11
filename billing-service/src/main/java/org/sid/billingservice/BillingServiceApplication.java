@@ -1,6 +1,6 @@
 package org.sid.billingservice;
 
-import org.sid.billingservice.entities.Productitem;
+import org.sid.billingservice.entities.ProductItem;
 import org.sid.billingservice.entities.bill;
 import org.sid.billingservice.feign.CustomerRestClient;
 import org.sid.billingservice.feign.ProductItemRestClient;
@@ -15,7 +15,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.hateoas.PagedModel;
 
-import java.util.Collection;
 import java.util.Date;
 import java.util.Random;
 
@@ -34,13 +33,14 @@ public class BillingServiceApplication {
 							 ProductItemRestClient productItemRestClient){
 		return args ->{
 			Customer customer=customerRestClient.getCustomerbyId(1L);
-			bill bill1=billrepository.save(new bill(null,new Date(),null,customer.getId(),null));
+			bill bill = billrepository.save(new bill(null, new Date(),null,customer.getId()));
+
 			PagedModel<Product> productPagedModel=productItemRestClient.pageProducts();
 			productPagedModel.forEach(p->{
-				Productitem productitem=new Productitem();
+				ProductItem productitem=new ProductItem();
 				productitem.setPrice(p.getPrice());
 				productitem.setQuantity(1+new Random().nextInt(100));
-				productitem.setBill(bill1);
+				productitem.setBill(bill);
 				productitem.setProductid(p.getId());
 				productitemrepository.save(productitem);
 			});

@@ -3,7 +3,6 @@ package org.sid.billingservice.entities;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.sid.billingservice.model.Customer;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -15,8 +14,6 @@ public class bill {
     private Long id;
     private Date billingDate;
     @OneToMany(mappedBy = "bill")
-    private Collection<Productitem> productitems;
-    private Long Customerid;
-    @Transient
-    private Customer customer;
+    private Collection<ProductItem> productItems;
+    private Long CustomerID;
 }
