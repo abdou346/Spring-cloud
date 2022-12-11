@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -49,7 +50,9 @@ class Product{
 	private double price;
 	private double quantity;
 }
+@CrossOrigin
 @RepositoryRestResource
+
 interface ProductRepository extends JpaRepository<Product,Long>{
 
 }

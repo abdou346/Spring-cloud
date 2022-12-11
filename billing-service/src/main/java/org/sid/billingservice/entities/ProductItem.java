@@ -10,7 +10,7 @@ import javax.persistence.*;
 
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor
-public class Productitem {
+public class ProductItem {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private double quantity;
